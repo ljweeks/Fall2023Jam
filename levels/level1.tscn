@@ -12,6 +12,7 @@ script = ExtResource("1_7t8rm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pqqq5")
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

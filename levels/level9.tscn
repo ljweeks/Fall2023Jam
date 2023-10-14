@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsgopsgtovyxf"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7gvk4"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_4l3mi"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_lj40s"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_emn78"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_qp33u"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_iuem0"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_7gvk4")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4l3mi")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lj40s")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="start" parent="." instance=ExtResource("4_emn78")]
+position = Vector2(1388, -848)
+init_speed = 750.0
+init_angle = 135.0
+total = 4
+
+[node name="Area2D" parent="." instance=ExtResource("5_qp33u")]
+position = Vector2(726, -387)
+
+[node name="Area2D2" parent="." instance=ExtResource("5_qp33u")]
+position = Vector2(412, 19)
+
+[node name="Area2D3" parent="." instance=ExtResource("5_qp33u")]
+position = Vector2(-861, 34)
+
+[node name="Area2D4" parent="." instance=ExtResource("5_qp33u")]
+position = Vector2(-420, 452)
+
+[node name="planet" parent="." instance=ExtResource("6_iuem0")]
+position = Vector2(458, -383)
+grav_size = 200
+
+[node name="planet4" parent="." instance=ExtResource("6_iuem0")]
+position = Vector2(-131, -411)
+gravity = 750.0
+grav_size = 500
+planet_size = 3
+
+[node name="planet2" parent="." instance=ExtResource("6_iuem0")]
+position = Vector2(983, -422)
+grav_size = 200
+
+[node name="planet3" parent="." instance=ExtResource("6_iuem0")]
+position = Vector2(28, 52)
+grav_size = 200
