@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://81o6vt32tlqk"]
+
+[ext_resource type="Script" path="res://alien.gd" id="1_1cr5y"]
+[ext_resource type="Texture2D" uid="uid://hk7mmhfc8v38" path="res://ship.png" id="2_cqohu"]
+[ext_resource type="Texture2D" uid="uid://wfd13wa2hdh5" path="res://particle_cirlce.png" id="3_p788d"]
+[ext_resource type="AudioStream" uid="uid://edt4n1n1d4cq" path="res://splat.wav" id="4_rewe0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21ql2"]
+radius = 24.35
+height = 86.98
+
+[sub_resource type="Gradient" id="Gradient_ptoaf"]
+offsets = PackedFloat32Array(0, 0.0860927, 0.562914, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_cag28"]
+min_value = -1.0
+_data = [Vector2(0, 0.221053), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Alien" type="Area2D" groups=["alien"]]
+script = ExtResource("1_1cr5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_21ql2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cqohu")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.81
+lifetime_randomness = 0.4
+texture = ExtResource("3_p788d")
+emission_shape = 1
+emission_sphere_radius = 16.85
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.4
+initial_velocity_max = 131.31
+tangential_accel_max = 30.3
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+color = Color(1, 0.662745, 0.0235294, 1)
+color_ramp = SubResource("Gradient_ptoaf")
+hue_variation_min = -0.44
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_cag28")
+
+[node name="splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rewe0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

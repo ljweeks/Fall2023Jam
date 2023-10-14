@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqla0rsnit5d7"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4a4ft"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_a584l"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_d2cjq"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_jl7up"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_6eipg"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_jtdtw"]
+[ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="7_pytvh"]
+[ext_resource type="PackedScene" uid="uid://drorgl05qjs2q" path="res://wall.tscn" id="8_um28e"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_4a4ft")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a584l")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d2cjq")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="start" parent="." instance=ExtResource("4_jl7up")]
+position = Vector2(-368, 467)
+init_speed = 1000.0
+init_angle = 215.0
+total = 6
+
+[node name="Area2D" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(-169, -385)
+
+[node name="planet2" parent="." instance=ExtResource("6_jtdtw")]
+position = Vector2(62, -110)
+gravity = 900.0
+grav_size = 800
+planet_size = 2
+
+[node name="planet3" parent="." instance=ExtResource("6_jtdtw")]
+position = Vector2(218, 182)
+gravity = 900.0
+grav_size = 800
+
+[node name="speed" parent="." instance=ExtResource("7_pytvh")]
+position = Vector2(100, -358)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_um28e")]
+position = Vector2(655, -316)
+rotation = -2.30157
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("8_um28e")]
+position = Vector2(384, -92)
+rotation = 1.5656
+
+[node name="Alien" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(640, 23)
+rotation = -0.00544845
+
+[node name="Alien6" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(648, -56)
+rotation = -0.00544845
+
+[node name="Alien2" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(648, -129)
+rotation = -0.00544845
+
+[node name="Alien3" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(640, -205)
+rotation = -0.00544845
+
+[node name="Alien4" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(586, -275)
+rotation = -0.00544845
+
+[node name="Alien5" parent="." instance=ExtResource("5_6eipg")]
+position = Vector2(586, -275)
+rotation = -0.00544845
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("8_um28e")]
+position = Vector2(740, -104)
+rotation = 1.56852

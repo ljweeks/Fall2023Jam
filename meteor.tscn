@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://chki4fght2d64"]
+
+[ext_resource type="Script" path="res://Meteor.gd" id="1_mpdw0"]
+[ext_resource type="Texture2D" uid="uid://c8ofmrduamh37" path="res://asteroid.png" id="2_a3kwr"]
+[ext_resource type="Script" path="res://spin.gd" id="3_bdk52"]
+[ext_resource type="Texture2D" uid="uid://wfd13wa2hdh5" path="res://particle_cirlce.png" id="3_tph2t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alnqy"]
+radius = 32.0
+
+[sub_resource type="Gradient" id="Gradient_hpwim"]
+offsets = PackedFloat32Array(0, 0.81457, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_ri00p"]
+min_value = -1.0
+_data = [Vector2(0, 0.768421), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Meteor" type="RigidBody2D" groups=["meteor"]]
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_mpdw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-0.25, -0.25)
+texture = ExtResource("2_a3kwr")
+script = ExtResource("3_bdk52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_alnqy")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 21
+lifetime = 1.4
+lifetime_randomness = 0.33
+texture = ExtResource("3_tph2t")
+emission_shape = 1
+emission_sphere_radius = 24.27
+direction = Vector2(-1, 0)
+spread = 39.55
+gravity = Vector2(0, 0)
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color = Color(1, 0.360784, 0, 1)
+color_ramp = SubResource("Gradient_hpwim")
+hue_variation_max = 0.14
+hue_variation_curve = SubResource("Curve_ri00p")
+
+[connection signal="body_entered" from="." to="." method="hit_planet"]

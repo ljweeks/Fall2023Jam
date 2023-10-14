@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6ltrgwbrbbq"]
+
+[ext_resource type="Script" path="res://path_rock.gd" id="1_7cl6a"]
+[ext_resource type="Texture2D" uid="uid://c8ofmrduamh37" path="res://asteroid.png" id="1_tx8li"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ofyr4"]
+radius = 32.0
+
+[node name="path" type="RigidBody2D" groups=["path_rock"]]
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_7cl6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.894118, 0.933333, 0.909804, 0.231373)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_tx8li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ofyr4")
+
+[connection signal="body_entered" from="." to="." method="hit_planet"]

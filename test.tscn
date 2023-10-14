@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://kygahky0gxhc"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_tgxgs"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="4_einbn"]
+[ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="5_v0d0q"]
+[ext_resource type="PackedScene" uid="uid://c45ps3ly3lxlj" path="res://suns.tscn" id="6_2hiqv"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="7_kn5b5"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="7_yhhd2"]
+[ext_resource type="PackedScene" uid="uid://drorgl05qjs2q" path="res://wall.tscn" id="8_gw5ib"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tgxgs")
+
+[node name="planet" parent="." instance=ExtResource("4_einbn")]
+position = Vector2(74, -173)
+gravity = 700.0
+grav_size = 400
+planet_size = 3
+
+[node name="planet2" parent="." instance=ExtResource("4_einbn")]
+position = Vector2(69, -29)
+grav_size = 300
+
+[node name="planet4" parent="." instance=ExtResource("4_einbn")]
+position = Vector2(91, 154)
+gravity = 300.0
+grav_size = 500
+planet_size = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="speed" parent="." instance=ExtResource("5_v0d0q")]
+position = Vector2(-72, -84)
+rotation = 3.11192
+
+[node name="planet3" parent="." instance=ExtResource("6_2hiqv")]
+position = Vector2(-309, 17)
+
+[node name="Area2D" parent="." instance=ExtResource("7_kn5b5")]
+position = Vector2(-171, -260)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_gw5ib")]
+position = Vector2(-90, 91)
+rotation = 0.718034
+
+[node name="start" parent="." instance=ExtResource("7_yhhd2")]
+position = Vector2(-311, -266)
+init_angle = 0.0

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1k6wc6jbwlkh"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7t8rm"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="2_pqqq5"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="3_hscb2"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="4_7ex86"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="5_wj641"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="6_6p7y5"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_7t8rm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pqqq5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="start" parent="." instance=ExtResource("3_hscb2")]
+position = Vector2(-545, -296)
+init_speed = 750.0
+init_angle = 0.0
+
+[node name="Area2D" parent="." instance=ExtResource("4_7ex86")]
+position = Vector2(561, -66)
+
+[node name="planet" parent="." instance=ExtResource("5_wj641")]
+position = Vector2(0, -288)
+grav_size = 500
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6p7y5")

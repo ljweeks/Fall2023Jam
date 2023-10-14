@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8gd6hg044iqu"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8gfjx"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_6us55"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_eoepw"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_rn1pu"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_3p4kr"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_2gvru"]
+[ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="7_msbbl"]
+[ext_resource type="PackedScene" uid="uid://drorgl05qjs2q" path="res://wall.tscn" id="8_tkm7e"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_8gfjx")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6us55")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eoepw")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="start" parent="." instance=ExtResource("4_rn1pu")]
+position = Vector2(1251, 642)
+init_speed = 700.0
+init_angle = 270.0
+total = 6
+
+[node name="Area2D" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(1216, 97)
+
+[node name="Area2D2" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(873, -424)
+
+[node name="Area2D3" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(-135, -485)
+
+[node name="Area2D4" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(424, -55)
+
+[node name="Area2D5" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(406, -816)
+
+[node name="Area2D8" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(416, -508)
+
+[node name="Area2D9" parent="." instance=ExtResource("5_3p4kr")]
+position = Vector2(416, -508)
+
+[node name="planet" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(762, 173)
+grav_size = 250
+
+[node name="planet2" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(243, 169)
+grav_size = 250
+
+[node name="planet3" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(-117, -31)
+gravity = 750.0
+grav_size = 250
+planet_size = 2
+
+[node name="planet5" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(-353, 69)
+gravity = 750.0
+grav_size = 250
+planet_size = 2
+
+[node name="planet6" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(-687, -23)
+gravity = 750.0
+grav_size = 250
+planet_size = 2
+
+[node name="planet4" parent="." instance=ExtResource("6_2gvru")]
+position = Vector2(-566, -416)
+gravity = 800.0
+grav_size = 300
+planet_size = 3
+
+[node name="speed" parent="." instance=ExtResource("7_msbbl")]
+position = Vector2(609, -479)
+rotation = -3.13927
+speed = 500.0
+
+[node name="speed2" parent="." instance=ExtResource("7_msbbl")]
+position = Vector2(-44.9999, -499)
+rotation = -3.13927
+speed = 500.0
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_tkm7e")]
+position = Vector2(-275, -523)
+rotation = 2.27819
+
+[node name="speed3" parent="." instance=ExtResource("7_msbbl")]
+position = Vector2(433, 13)
+rotation = -1.57894
+
+[node name="speed4" parent="." instance=ExtResource("7_msbbl")]
+position = Vector2(425, -335)
+rotation = -1.57894

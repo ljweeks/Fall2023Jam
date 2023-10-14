@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://btts4idj0txmv"]
+
+[ext_resource type="Script" path="res://speed.gd" id="1_x1mjm"]
+[ext_resource type="Texture2D" uid="uid://b5sw4bvqfs4g6" path="res://speed.png" id="2_k81k2"]
+[ext_resource type="Texture2D" uid="uid://wfd13wa2hdh5" path="res://particle_cirlce.png" id="3_2n7p5"]
+[ext_resource type="Texture2D" uid="uid://6i5c1ro1a4cc" path="res://icon.svg" id="3_cso0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfv4p"]
+size = Vector2(200, 98)
+
+[sub_resource type="Gradient" id="Gradient_fjsmw"]
+offsets = PackedFloat32Array(0, 0.304636, 0.781457, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_gn6yu"]
+min_value = -1.0
+_data = [Vector2(0, 0.642105), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="speed" type="Area2D"]
+script = ExtResource("1_x1mjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-99, 0)
+shape = SubResource("RectangleShape2D_nfv4p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-100, 0)
+rotation = 1.5708
+texture = ExtResource("2_k81k2")
+
+[node name="end" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="end"]
+visible = false
+position = Vector2(397, -5)
+texture = ExtResource("3_cso0v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-198, 1)
+amount = 20
+lifetime = 0.8
+lifetime_randomness = 0.3
+texture = ExtResource("3_2n7p5")
+emission_shape = 3
+emission_rect_extents = Vector2(45, 10)
+spread = 10.45
+gravity = Vector2(0, 0)
+initial_velocity_min = 222.22
+initial_velocity_max = 303.03
+linear_accel_min = 10.1
+linear_accel_max = 74.74
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+color = Color(0, 0.921569, 1, 1)
+color_ramp = SubResource("Gradient_fjsmw")
+hue_variation_min = -0.04
+hue_variation_max = 0.3
+hue_variation_curve = SubResource("Curve_gn6yu")
+
+[connection signal="body_entered" from="." to="." method="entered_grav"]
+[connection signal="body_exited" from="." to="." method="exited_grav"]

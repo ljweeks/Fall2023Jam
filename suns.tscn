@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://c45ps3ly3lxlj"]
+
+[ext_resource type="Script" path="res://suns.gd" id="1_dwcxv"]
+[ext_resource type="Texture2D" uid="uid://d3q4ocsiwgvq2" path="res://sun.png" id="2_ej6xj"]
+[ext_resource type="Texture2D" uid="uid://c4fne7d85fo3k" path="res://edge.png" id="3_o5qg1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_emqd8"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jopu1"]
+radius = 100.0
+
+[node name="planet" type="StaticBody2D" groups=["planet"]]
+input_pickable = true
+script = ExtResource("1_dwcxv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ej6xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_emqd8")
+
+[node name="grav_field_area" type="Area2D" parent="."]
+gravity_space_override = 1
+gravity_point = true
+
+[node name="gravity_field_collision" type="CollisionShape2D" parent="grav_field_area"]
+shape = SubResource("CircleShape2D_jopu1")
+
+[node name="center" type="Node2D" parent="."]
+
+[node name="edge1" type="Sprite2D" parent="center"]
+modulate = Color(1, 1, 1, 0.627451)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o5qg1")
+
+[node name="edge2" type="Sprite2D" parent="center"]
+modulate = Color(1, 1, 1, 0.627451)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o5qg1")
+
+[node name="edge3" type="Sprite2D" parent="center"]
+modulate = Color(1, 1, 1, 0.627451)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o5qg1")
+
+[node name="edge4" type="Sprite2D" parent="center"]
+modulate = Color(1, 1, 1, 0.627451)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o5qg1")
