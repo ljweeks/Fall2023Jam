@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cj0k5cw8jafcu"
-path="res://.godot/imported/spaceTheme.mp3-b7cbb03efd3a195370b47dd4ebe3cb9a.mp3str"
+uid="uid://dfagujek88gxo"
+path="res://.godot/imported/SpaceTheme.mp3-38995800ff21afbafc327402826f0eec.mp3str"
 
 [deps]
 
-source_file="res://spaceTheme.mp3"
-dest_files=["res://.godot/imported/spaceTheme.mp3-b7cbb03efd3a195370b47dd4ebe3cb9a.mp3str"]
+source_file="res://SpaceTheme.mp3"
+dest_files=["res://.godot/imported/SpaceTheme.mp3-38995800ff21afbafc327402826f0eec.mp3str"]
 
 [params]
 

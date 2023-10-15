@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_4a4ft"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_a584l"]
-[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_d2cjq"]
+[ext_resource type="AudioStream" uid="uid://dfagujek88gxo" path="res://spaceTheme.mp3" id="3_d2cjq"]
 [ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_jl7up"]
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_6eipg"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_jtdtw"]

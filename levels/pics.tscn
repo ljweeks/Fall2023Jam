@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_bcbt5"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_jreg5"]
-[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_5vk3k"]
+[ext_resource type="AudioStream" uid="uid://dfagujek88gxo" path="res://spaceTheme.mp3" id="3_5vk3k"]
 [ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_0cybm"]
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_7d3y1"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_i8e4t"]
@@ -25,7 +25,7 @@ autoplay = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="start" parent="." instance=ExtResource("4_0cybm")]
-position = Vector2(-904, 232)
+position = Vector2(-481, 251)
 init_speed = 800.0
 init_angle = 0.0
 
@@ -33,9 +33,9 @@ init_angle = 0.0
 position = Vector2(323, -354)
 
 [node name="planet" parent="." instance=ExtResource("6_i8e4t")]
-position = Vector2(-437, 59)
-gravity = 700.0
-grav_size = 200
+position = Vector2(-321, 106)
+gravity = 900.0
+grav_size = 250
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
@@ -48,13 +48,13 @@ metadata/_edit_lock_ = true
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(-75.875, 0)
 texture = ExtResource("8_7lp40")
-metadata/_edit_lock_ = true
 
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(2, -174)
 texture = ExtResource("9_v7hiy")
 
 [node name="planet2" parent="." instance=ExtResource("10_yy4jd")]
-position = Vector2(348, 68)
+position = Vector2(333, 164)
 grav_size = 250
