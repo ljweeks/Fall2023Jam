@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://daq4nhgttqocw"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_mvvlg"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_m3kmm"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_ieflm"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_4rhrv"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_mwufa"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_whqiq"]
+[ext_resource type="Texture2D" uid="uid://lqtvxfkh2jij" path="res://title.png" id="8_1w7rl"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_e0e35"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="9_dx07s"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_mvvlg")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m3kmm")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ieflm")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="start" parent="." instance=ExtResource("4_4rhrv")]
+position = Vector2(-165, 198)
+init_speed = 500.0
+init_angle = 0.0
+
+[node name="Area2D" parent="." instance=ExtResource("5_mwufa")]
+position = Vector2(302, 200)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+texture = ExtResource("7_whqiq")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+texture = ExtResource("8_e0e35")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(1, -260)
+texture = ExtResource("8_1w7rl")
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-649, 467)
+texture = ExtResource("9_dx07s")

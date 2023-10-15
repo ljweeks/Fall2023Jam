@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://vq45f18tmojt"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_bcbt5"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_jreg5"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_5vk3k"]
+[ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_0cybm"]
+[ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_7d3y1"]
+[ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_i8e4t"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_tjsml"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_7lp40"]
+[ext_resource type="Texture2D" uid="uid://lqtvxfkh2jij" path="res://title.png" id="9_v7hiy"]
+[ext_resource type="PackedScene" uid="uid://c45ps3ly3lxlj" path="res://suns.tscn" id="10_yy4jd"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_bcbt5")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jreg5")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5vk3k")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="start" parent="." instance=ExtResource("4_0cybm")]
+position = Vector2(-904, 232)
+init_speed = 800.0
+init_angle = 0.0
+
+[node name="Area2D" parent="." instance=ExtResource("5_7d3y1")]
+position = Vector2(323, -354)
+
+[node name="planet" parent="." instance=ExtResource("6_i8e4t")]
+position = Vector2(-437, 59)
+gravity = 700.0
+grav_size = 200
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+texture = ExtResource("7_tjsml")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+texture = ExtResource("8_7lp40")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(2, -174)
+texture = ExtResource("9_v7hiy")
+
+[node name="planet2" parent="." instance=ExtResource("10_yy4jd")]
+position = Vector2(348, 68)
+grav_size = 250

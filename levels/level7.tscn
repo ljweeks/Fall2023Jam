@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdq4sm0x5me4w"]
+[gd_scene load_steps=12 format=3 uid="uid://bdq4sm0x5me4w"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ewpxu"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_avcc0"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_p6tx4"]
 [ext_resource type="PackedScene" uid="uid://drorgl05qjs2q" path="res://wall.tscn" id="7_bsniv"]
 [ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="8_kvasq"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="9_bh544"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="10_5nid7"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="11_a64ig"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_ewpxu")
@@ -21,39 +24,32 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 
 [node name="start" parent="." instance=ExtResource("4_kllc0")]
 position = Vector2(-951, -496)
 init_speed = 500.0
 init_angle = 0.0
-total = 7
-
-[node name="Area2D" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(976, -115)
+total = 3
 
 [node name="Area2D2" parent="." instance=ExtResource("5_4onpg")]
 position = Vector2(1024, 71)
 
 [node name="Area2D3" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(986, 236)
+position = Vector2(474, -163)
 
 [node name="Area2D4" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(870, 369)
-
-[node name="Area2D5" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(720, 485)
-
-[node name="Area2D6" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(534, 552)
-
-[node name="Area2D7" parent="." instance=ExtResource("5_4onpg")]
-position = Vector2(836, -215)
+position = Vector2(-147, 155)
 
 [node name="planet" parent="." instance=ExtResource("6_p6tx4")]
 position = Vector2(0, -3)
-gravity = 900.0
-grav_size = 800
+grav_size = 600
+
+[node name="planet2" parent="." instance=ExtResource("6_p6tx4")]
+position = Vector2(530, 290)
+gravity = 300.0
+grav_size = 500
+planet_size = 2
 
 [node name="StaticBody2D" parent="." instance=ExtResource("7_bsniv")]
 position = Vector2(-676, -73)
@@ -113,3 +109,23 @@ speed = 2000.0
 [node name="speed3" parent="." instance=ExtResource("8_kvasq")]
 position = Vector2(-423, 331)
 rotation = 0.0124075
+speed = 750.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("9_bh544")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("10_5nid7")
+metadata/_edit_lock_ = true
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-1060, 700)
+texture = ExtResource("11_a64ig")

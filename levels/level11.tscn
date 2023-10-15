@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx7dwaw7u7sx4"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_lo7vd"]
+[ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_hlm7d"]
+[ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="3_6x8ti"]
+[ext_resource type="Texture2D" uid="uid://30vagi8ddqdx" path="res://thanks.png" id="6_auiqe"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_nrpoy"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_u1hsd"]
+
+[node name="main" type="Node2D" groups=["main"]]
+script = ExtResource("1_lo7vd")
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hlm7d")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6x8ti")
+volume_db = -6.559
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+texture = ExtResource("7_nrpoy")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+texture = ExtResource("8_u1hsd")
+
+[node name="Thanks" type="Sprite2D" parent="."]
+position = Vector2(2, -247)
+texture = ExtResource("6_auiqe")

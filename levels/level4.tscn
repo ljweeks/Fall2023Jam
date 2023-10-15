@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl1pxou3qbn3j"]
+[gd_scene load_steps=12 format=3 uid="uid://bl1pxou3qbn3j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kdwac"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_humcg"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_7ra5g"]
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="7_07ldr"]
 [ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="7_88334"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="8_nylen"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="9_jarrn"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="10_32i88"]
+[ext_resource type="Texture2D" uid="uid://boaojljoe0ffr" path="res://vroom.png" id="11_weh3t"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_kdwac")
@@ -20,9 +24,10 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="start" parent="." instance=ExtResource("4_112jr")]
-position = Vector2(-955, -437)
+position = Vector2(-935.705, -437)
 init_speed = 500.0
 init_angle = 0.0
 total = 4
@@ -53,3 +58,24 @@ position = Vector2(-492, 379)
 gravity = 800.0
 grav_size = 600
 planet_size = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("8_nylen")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("9_jarrn")
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-973, 650)
+texture = ExtResource("10_32i88")
+
+[node name="Vroom" type="Sprite2D" parent="."]
+position = Vector2(-753, -498)
+texture = ExtResource("11_weh3t")

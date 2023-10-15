@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsgopsgtovyxf"]
+[gd_scene load_steps=10 format=3 uid="uid://dsgopsgtovyxf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7gvk4"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_4l3mi"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_emn78"]
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_qp33u"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_iuem0"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_0h2qb"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_lqr85"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="9_7ocqd"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_7gvk4")
@@ -19,10 +22,10 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 
 [node name="start" parent="." instance=ExtResource("4_emn78")]
-position = Vector2(1388, -848)
+position = Vector2(1245, -667)
 init_speed = 750.0
 init_angle = 135.0
 total = 4
@@ -56,3 +59,20 @@ grav_size = 200
 [node name="planet3" parent="." instance=ExtResource("6_iuem0")]
 position = Vector2(28, 52)
 grav_size = 200
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_0h2qb")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("8_lqr85")
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-1057, 697)
+texture = ExtResource("9_7ocqd")

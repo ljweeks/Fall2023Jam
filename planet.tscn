@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://s53xs0q3w2ip"]
+[gd_scene load_steps=10 format=3 uid="uid://s53xs0q3w2ip"]
 
 [ext_resource type="Script" path="res://planet.gd" id="1_4q28r"]
 [ext_resource type="Texture2D" uid="uid://cvg6ft87wvcse" path="res://planets/planet1.png" id="2_og655"]
 [ext_resource type="Texture2D" uid="uid://wfd13wa2hdh5" path="res://particle_cirlce.png" id="3_rk3ef"]
 [ext_resource type="Texture2D" uid="uid://c4fne7d85fo3k" path="res://edge.png" id="4_ubght"]
+[ext_resource type="AudioStream" uid="uid://clv5jtjlqnrgj" path="res://place.wav" id="5_exdb3"]
+[ext_resource type="AudioStream" uid="uid://dnac8ymajl7nl" path="res://pickup.wav" id="6_1i3g0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emqd8"]
 radius = 32.0
@@ -28,6 +30,7 @@ shape = SubResource("CircleShape2D_emqd8")
 [node name="grav_field_area" type="Area2D" parent="."]
 gravity_space_override = 1
 gravity_point = true
+gravity_point_unit_distance = 500.0
 
 [node name="gravity_field_collision" type="CollisionShape2D" parent="grav_field_area"]
 shape = SubResource("CircleShape2D_jopu1")
@@ -72,3 +75,9 @@ modulate = Color(1, 1, 1, 0.627451)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_ubght")
+
+[node name="place" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_exdb3")
+
+[node name="pick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1i3g0")

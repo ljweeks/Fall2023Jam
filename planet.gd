@@ -14,9 +14,10 @@ var mouse_time = 0
 var meteor_in = false
 var wait = 0
 var can_move = true
-var moving = RandomNumberGenerator.new()
+var moving = false
 func _ready():
 	$grav_field_area.set_gravity(gravity)
+	$grav_field_area.set_gravity_point_unit_distance((grav_size / 1.5))
 	$Sprite2D.texture = load(planets[planet_size-1])
 	$center/edge1.position.y = -grav_size
 	$center/edge2.position.x = grav_size
@@ -40,8 +41,10 @@ func _physics_process(delta):
 		mouse_time -= delta
 	if(Input.is_action_just_pressed("click") and can_move and mouse_over):
 		moving = true
+		$pick.play()
 	if(Input.is_action_just_released("click")):
 		moving = false
+		$place.play()
 	if(Input.is_action_pressed("click") and mouse_time > 0 and can_move and moving):
 		mouse_time = 0.05
 		global_transform.origin = get_global_mouse_position()

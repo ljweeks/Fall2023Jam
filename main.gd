@@ -21,6 +21,8 @@ func win():
 	timer = 2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(Input.is_action_just_pressed("skip")):
+		win()
 	timer -= delta
 	if(timer < 0 and win_state):
 		next_level()

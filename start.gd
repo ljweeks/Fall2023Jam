@@ -10,12 +10,16 @@ var path_rock = load("res://path_rock.tscn")
 var meteor
 var start = false
 var points = 0
-
+var shot_time = 0
 var timer = 0
-var time_to_wait = 1
+var time_to_wait = 0.7
 var path_item
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$sata1.rotate(deg_to_rad(init_angle))
+	$sata2.rotate(deg_to_rad(init_angle))
+	$shot.rotate(deg_to_rad(init_angle))
+	$sata2.hide()
 	pass # Replace with function body.
 
 func create_meteor():
@@ -24,7 +28,7 @@ func create_meteor():
 	meteor.dead.connect(planet_hit)
 	meteor.show()
 	add_child(meteor)
-	meteor.global_position = $Sprite2D.global_position
+	meteor.global_position = self.global_position
 	meteor.init_angle = init_angle
 	meteor.init_speed = init_speed
 	meteor.go()
@@ -45,6 +49,12 @@ func restart():
 	
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	shot_time -= delta
+	
+	if(shot_time < 0):
+		$sata1.show()
+		$sata2.hide()
+	
 	timer -=  delta
 	if(timer < 0 and start == false):
 		var new_path_item = path_rock.instantiate()
@@ -53,18 +63,21 @@ func _process(delta):
 		new_path_item.dead.connect(planet_hit)
 		new_path_item.show()
 		add_child(new_path_item)
-		new_path_item.global_position = $Sprite2D.global_position
+		new_path_item.global_position = global_position
 		new_path_item.init_angle = init_angle
 		new_path_item.init_speed = init_speed
 		timer = time_to_wait
 		new_path_item.go()
-
-
 		
 	if(Input.is_action_just_pressed("restart")):
 		restart()
-	if(Input.is_action_just_pressed("start")):
+	if(Input.is_action_just_pressed("start") and start == false):
+		$shot.emitting = true
+		$shoot.play()
 		start = true
+		$sata1.hide()
+		$sata2.show()
+		shot_time = 0.25
 		for item in get_tree().get_nodes_in_group("path_rock"):
 			item.queue_free()
 		create_meteor()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqla0rsnit5d7"]
+[gd_scene load_steps=12 format=3 uid="uid://cqla0rsnit5d7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4a4ft"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_a584l"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_jtdtw"]
 [ext_resource type="PackedScene" uid="uid://btts4idj0txmv" path="res://speed.tscn" id="7_pytvh"]
 [ext_resource type="PackedScene" uid="uid://drorgl05qjs2q" path="res://wall.tscn" id="8_um28e"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="9_l0cbr"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="10_sm26u"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="11_qcjdx"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_4a4ft")
@@ -21,27 +24,26 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="start" parent="." instance=ExtResource("4_jl7up")]
 position = Vector2(-368, 467)
 init_speed = 1000.0
-init_angle = 215.0
+init_angle = 240.0
 total = 6
 
 [node name="Area2D" parent="." instance=ExtResource("5_6eipg")]
-position = Vector2(-169, -385)
+position = Vector2(526, -334)
 
 [node name="planet2" parent="." instance=ExtResource("6_jtdtw")]
 position = Vector2(62, -110)
 gravity = 900.0
-grav_size = 800
+grav_size = 400
 planet_size = 2
 
 [node name="planet3" parent="." instance=ExtResource("6_jtdtw")]
 position = Vector2(218, 182)
 gravity = 900.0
-grav_size = 800
+grav_size = 400
 
 [node name="speed" parent="." instance=ExtResource("7_pytvh")]
 position = Vector2(100, -358)
@@ -81,3 +83,21 @@ rotation = -0.00544845
 [node name="StaticBody2D3" parent="." instance=ExtResource("8_um28e")]
 position = Vector2(740, -104)
 rotation = 1.56852
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("9_l0cbr")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("10_sm26u")
+metadata/_edit_lock_ = true
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-648, 469)
+texture = ExtResource("11_qcjdx")

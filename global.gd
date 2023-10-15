@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_stage = 1
+var current_stage = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

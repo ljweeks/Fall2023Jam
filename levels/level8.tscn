@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6h2rmrl8ae7j"]
+[gd_scene load_steps=11 format=3 uid="uid://c6h2rmrl8ae7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nbcxw"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="2_reb8h"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cajk38v1fe5i5" path="res://start.tscn" id="4_x17n0"]
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="5_gca26"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="6_bijvh"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="8_6h2dg"]
 [ext_resource type="PackedScene" uid="uid://c45ps3ly3lxlj" path="res://suns.tscn" id="8_c874g"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="9_g10xc"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="10_1fmcs"]
 
 [node name="main" type="Node2D" groups=["main"]]
+position = Vector2(0, 1)
 script = ExtResource("1_nbcxw")
 
 [node name="victory" type="AudioStreamPlayer" parent="."]
@@ -20,42 +24,62 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 
 [node name="start" parent="." instance=ExtResource("4_x17n0")]
-position = Vector2(-750, 476)
+position = Vector2(-947, 663)
 init_speed = 1000.0
 init_angle = 270.0
 total = 3
 
 [node name="Area2D3" parent="." instance=ExtResource("5_gca26")]
-position = Vector2(1244, -551)
+position = Vector2(1047, -364)
 
 [node name="Area2D5" parent="." instance=ExtResource("5_gca26")]
-position = Vector2(779, -784)
+position = Vector2(582, -597)
 
 [node name="Area2D4" parent="." instance=ExtResource("5_gca26")]
-position = Vector2(227, -773)
+position = Vector2(30, -586)
 
 [node name="planet4" parent="." instance=ExtResource("6_bijvh")]
-position = Vector2(512, -113)
+position = Vector2(315, 74)
 gravity = 1000.0
 grav_size = 300
 planet_size = 2
 
 [node name="planet5" parent="." instance=ExtResource("6_bijvh")]
-position = Vector2(15, 398)
+position = Vector2(-182, 585)
 gravity = 800.0
 grav_size = 300
 planet_size = 3
 
 [node name="planet6" parent="." instance=ExtResource("6_bijvh")]
-position = Vector2(1067, 384)
+position = Vector2(870, 571)
 gravity = 800.0
 grav_size = 300
 planet_size = 3
 
 [node name="planet" parent="." instance=ExtResource("8_c874g")]
-position = Vector2(-454, 32)
+position = Vector2(-651, 219)
 gravity = 2000.0
-grav_size = 300
+grav_size = 350
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("8_6h2dg")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("9_g10xc")
+metadata/_edit_lock_ = true
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-1039, 690)
+texture = ExtResource("10_1fmcs")

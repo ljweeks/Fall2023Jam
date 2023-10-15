@@ -18,6 +18,7 @@ var dir
 func _ready():
 	$grav_field_area.set_gravity(gravity)
 	$grav_field_area/gravity_field_collision.shape.set_radius(grav_size)
+	$grav_field_area.set_gravity_point_unit_distance((grav_size / 1.5))
 	dir = randi_range(0,1)
 	if(dir == 0):
 		dir -= 1
@@ -34,7 +35,7 @@ func _ready():
 
 	
 func _physics_process(delta):
-	$Sprite2D.rotate(deg_to_rad(randf_range(0,1)) * dir)
+	$Sprite2D.rotate(deg_to_rad(1) * dir)
 	$center.rotate(deg_to_rad(1))
 
 

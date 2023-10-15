@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1k6wc6jbwlkh"]
+[gd_scene load_steps=11 format=3 uid="uid://b1k6wc6jbwlkh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7t8rm"]
 [ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="2_pqqq5"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="4_7ex86"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="5_wj641"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="6_6p7y5"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_p375i"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_sj2jk"]
+[ext_resource type="Texture2D" uid="uid://xa556bryou1h" path="res://directions.png" id="9_e0ior"]
+[ext_resource type="Texture2D" uid="uid://db8yi0p0iltxp" path="res://what_to_do.png" id="10_k0jss"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_7t8rm")
@@ -15,11 +19,10 @@ stream = ExtResource("2_pqqq5")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="start" parent="." instance=ExtResource("3_hscb2")]
 position = Vector2(-545, -296)
-init_speed = 750.0
+init_speed = 500.0
 init_angle = 0.0
 
 [node name="Area2D" parent="." instance=ExtResource("4_7ex86")]
@@ -27,7 +30,30 @@ position = Vector2(561, -66)
 
 [node name="planet" parent="." instance=ExtResource("5_wj641")]
 position = Vector2(0, -288)
+gravity = 150.0
 grav_size = 500
 
 [node name="victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_6p7y5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_p375i")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("8_sj2jk")
+metadata/_edit_lock_ = true
+
+[node name="Directions" type="Sprite2D" parent="."]
+position = Vector2(-642, 461)
+texture = ExtResource("9_e0ior")
+
+[node name="WhatToDo" type="Sprite2D" parent="."]
+position = Vector2(551, -375)
+texture = ExtResource("10_k0jss")

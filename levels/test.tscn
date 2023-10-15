@@ -17,6 +17,6 @@ rotation = -1.57845
 speed = 200.0
 
 [node name="planet" parent="." instance=ExtResource("3_wmpp5")]
-position = Vector2(561, 173)
+position = Vector2(626, 391)
 gravity = 1000.0
 grav_size = 300

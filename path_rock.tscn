@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg6ltrgwbrbbq"]
 
 [ext_resource type="Script" path="res://path_rock.gd" id="1_7cl6a"]
-[ext_resource type="Texture2D" uid="uid://c8ofmrduamh37" path="res://asteroid.png" id="1_tx8li"]
+[ext_resource type="Texture2D" uid="uid://c21mje74c3jyy" path="res://asteroid_outline.png" id="2_x78bd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ofyr4"]
 radius = 32.0
@@ -12,9 +12,9 @@ contact_monitor = true
 script = ExtResource("1_7cl6a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.894118, 0.933333, 0.909804, 0.231373)
+modulate = Color(0.917647, 0.866667, 0.32549, 0.411765)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_tx8li")
+texture = ExtResource("2_x78bd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ofyr4")

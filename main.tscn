@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhnq8qjjdl56f"]
+[gd_scene load_steps=9 format=3 uid="uid://bhnq8qjjdl56f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rkag1"]
 [ext_resource type="AudioStream" uid="uid://cj0k5cw8jafcu" path="res://spaceTheme.mp3" id="2_5bbnd"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://81o6vt32tlqk" path="res://alien.tscn" id="4_ixpps"]
 [ext_resource type="PackedScene" uid="uid://s53xs0q3w2ip" path="res://planet.tscn" id="5_mtqry"]
 [ext_resource type="AudioStream" uid="uid://bqm4p0ovlpoii" path="res://victory.wav" id="6_iunip"]
+[ext_resource type="Texture2D" uid="uid://bddv8el21o7vc" path="res://blankbackground.png" id="7_ceym6"]
+[ext_resource type="Texture2D" uid="uid://bqkyp5gxhfvh1" path="res://stars.png" id="8_3nsjq"]
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_rkag1")
@@ -19,7 +21,6 @@ volume_db = -6.559
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="start" parent="." instance=ExtResource("3_v264a")]
 position = Vector2(-545, -296)
@@ -32,3 +33,27 @@ position = Vector2(561, -66)
 [node name="planet" parent="." instance=ExtResource("5_mtqry")]
 position = Vector2(0, -288)
 grav_size = 200
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_ceym6")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("8_3nsjq")
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+texture = ExtResource("7_ceym6")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+texture = ExtResource("8_3nsjq")
